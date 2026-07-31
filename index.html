@@ -123,15 +123,14 @@
     padding:3px 9px; border-radius:20px;
   }
 
-  /* SKILL GRAPH */
-  .graph-wrap{ overflow-x:auto; padding-bottom:6px; }
-  svg#skillgraph{ display:block; min-width:600px; width:100%; height:auto; }
-  .node-circle{ fill:var(--panel); stroke:var(--node); stroke-width:1.4; transition: fill 0.2s, stroke 0.2s; }
-  .node-group:hover .node-circle{ fill:var(--amber); stroke:var(--amber-deep); }
-  .node-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; fill:var(--ink); }
-  .edge{ stroke:var(--line); stroke-width:1.3; }
-  .root-circle{ fill:var(--amber-deep); stroke:var(--amber-deep); }
-  .root-label{ fill:var(--on-amber); font-weight:600; }
+  /* SKILLS */
+  .skill-group{ margin-bottom:0; }
+  .skill-group + .skill-group{ margin-top:28px; }
+  .skill-group-title{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    color:var(--amber-deep); text-transform:uppercase; letter-spacing:0.1em;
+    margin-bottom:12px;
+  }
 
   /* CERTS */
   .cert-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
@@ -142,12 +141,16 @@
   .cert .num{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--amber-deep); }
   .cert h3{ font-size:0.98rem; font-weight:600; margin-top:6px; }
 
-  /* LANGUAGES */
+  /* LANGUAGES / PILLS */
   .lang-row{ display:flex; gap:14px; flex-wrap:wrap; }
   .lang-pill{
     font-family:'IBM Plex Mono', monospace; font-size:0.82rem;
     border:1px solid var(--node); padding:7px 16px; border-radius:20px;
     color:var(--ink-soft);
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .lang-pill:hover{
+    border-color:var(--amber-deep); color:var(--ink); background:rgba(221,154,52,0.1);
   }
 
   /* CONTACT */
@@ -191,9 +194,7 @@
   <div class="wrap">
     <div class="eyebrow">available for opportunities</div>
     <h1 class="name">Mehak Kherajani<br><em>Software Engineer</em></h1>
-    <p class="role-line">Software Engineering ungraduate from DHA Suffa University, building a foundation across data structures, generative AI, and data analysis — with a habit of picking up whatever the next problem needs.</p>
-
-  
+    <p class="role-line">Software Engineering graduate from DHA Suffa University, building a foundation across data structures, generative AI, and data analysis — with a habit of picking up whatever the next problem needs.</p>
 
     <div class="hero-meta">
       <div><span class="dot"></span> Karachi, DHA Phase 5, Upper Gizri</div>
@@ -241,66 +242,36 @@
 <section id="skills">
   <div class="wrap">
     <div class="kicker">03 / Skills</div>
-    <h2 class="title">How it connects</h2>
-    <p style="color:var(--ink-soft); max-width:58ch; margin-bottom:26px; font-size:0.95rem;">Core computer science sits at the center, branching out into languages and applied practice — the way a real skill tree grows.</p>
-    <div class="graph-wrap">
-      <svg id="skillgraph" viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg">
-        <!-- edges -->
-        <g class="edges">
-          <line class="edge" x1="90" y1="150" x2="270" y2="70"/>
-          <line class="edge" x1="90" y1="150" x2="270" y2="150"/>
-          <line class="edge" x1="90" y1="150" x2="270" y2="230"/>
+    <h2 class="title">What I work with</h2>
+    <p style="color:var(--ink-soft); max-width:58ch; margin-bottom:30px; font-size:0.95rem;">Core computer science fundamentals, applied through languages and hands-on practice.</p>
 
-          <line class="edge" x1="270" y1="70" x2="450" y2="30"/>
-          <line class="edge" x1="270" y1="70" x2="450" y2="90"/>
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="lang-row">
+        <span class="lang-pill">C++</span>
+        <span class="lang-pill">Java</span>
+        <span class="lang-pill">Python</span>
+        <span class="lang-pill">C Language</span>
+      </div>
+    </div>
 
-          <line class="edge" x1="270" y1="150" x2="450" y2="150"/>
-          <line class="edge" x1="270" y1="150" x2="450" y2="200"/>
+    <div class="skill-group">
+      <div class="skill-group-title">Data Structures &amp; Algorithms</div>
+      <div class="lang-row">
+        <span class="lang-pill">Algorithms</span>
+        <span class="lang-pill">Data Structures</span>
+      </div>
+    </div>
 
-          <line class="edge" x1="270" y1="230" x2="450" y2="230"/>
-          <line class="edge" x1="270" y1="230" x2="450" y2="270"/>
-
-          <line class="edge" x1="450" y1="30" x2="640" y2="30"/>
-          <line class="edge" x1="450" y1="90" x2="640" y2="90"/>
-          <line class="edge" x1="450" y1="150" x2="640" y2="150"/>
-          <line class="edge" x1="450" y1="200" x2="640" y2="200"/>
-          <line class="edge" x1="450" y1="270" x2="640" y2="270"/>
-        </g>
-
-        <!-- root -->
-        <g class="node-group">
-          <circle class="node-circle root-circle" cx="90" cy="150" r="30"/>
-          <text class="node-label root-label" x="90" y="154" text-anchor="middle">CS</text>
-        </g>
-
-        <!-- level 1 -->
-        <g class="node-group">
-          <circle class="node-circle" cx="270" cy="70" r="22"/>
-          <text class="node-label" x="270" y="46" text-anchor="middle">Languages</text>
-        </g>
-        <g class="node-group">
-          <circle class="node-circle" cx="270" cy="150" r="22"/>
-          <text class="node-label" x="270" y="126" text-anchor="middle">DSA</text>
-        </g>
-        <g class="node-group">
-          <circle class="node-circle" cx="270" cy="230" r="22"/>
-          <text class="node-label" x="270" y="264" text-anchor="middle">Applied</text>
-        </g>
-
-        <!-- level 2 -->
-        <g class="node-group"><circle class="node-circle" cx="450" cy="30" r="16"/><text class="node-label" x="450" y="10" text-anchor="middle">C++</text></g>
-        <g class="node-group"><circle class="node-circle" cx="450" cy="90" r="16"/><text class="node-label" x="450" y="70" text-anchor="middle">Java</text></g>
-        <g class="node-group"><circle class="node-circle" cx="450" cy="150" r="16"/><text class="node-label" x="450" y="130" text-anchor="middle">Algorithms</text></g>
-        <g class="node-group"><circle class="node-circle" cx="450" cy="200" r="16"/><text class="node-label" x="450" y="222" text-anchor="middle">Web (HTML/CSS)</text></g>
-        <g class="node-group"><circle class="node-circle" cx="450" cy="270" r="16"/><text class="node-label" x="450" y="292" text-anchor="middle">Data Analysis</text></g>
-
-        <!-- level 3 -->
-        <g class="node-group"><circle class="node-circle" cx="640" cy="30" r="14"/><text class="node-label" x="668" y="34" text-anchor="start">Python</text></g>
-        <g class="node-group"><circle class="node-circle" cx="640" cy="90" r="14"/><text class="node-label" x="668" y="94" text-anchor="start">C Language</text></g>
-        <g class="node-group"><circle class="node-circle" cx="640" cy="150" r="14"/><text class="node-label" x="668" y="154" text-anchor="start">Graphic Design</text></g>
-        <g class="node-group"><circle class="node-circle" cx="640" cy="200" r="14"/><text class="node-label" x="668" y="204" text-anchor="start">CIT Course</text></g>
-        <g class="node-group"><circle class="node-circle" cx="640" cy="270" r="14"/><text class="node-label" x="668" y="274" text-anchor="start">Generative AI</text></g>
-      </svg>
+    <div class="skill-group">
+      <div class="skill-group-title">Applied</div>
+      <div class="lang-row">
+        <span class="lang-pill">Web (HTML/CSS)</span>
+        <span class="lang-pill">Data Analysis</span>
+        <span class="lang-pill">Generative AI</span>
+        <span class="lang-pill">Graphic Design</span>
+        <span class="lang-pill">CIT Course</span>
+      </div>
     </div>
   </div>
 </section>
